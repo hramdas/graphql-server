@@ -2,11 +2,13 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4')
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const typeDefs = require('./schema')
 const resolvers = require('./resolvers')
 const app = express();
 const port = 3060
 app.use(bodyParser.json())
+app.use(cors())
 const server = new ApolloServer({
   typeDefs,
   resolvers
